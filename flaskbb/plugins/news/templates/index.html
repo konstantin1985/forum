@@ -1,0 +1,113 @@
+{% extends theme("layout.html") %}
+
+{% block css %}
+  {{  super() }}
+
+  <style>
+  /* news posts */
+  .news-info {
+      font-size:15px;
+      color:#999999;
+      padding: 0;
+      margin-top:5px;
+      margin-bottom:10px;
+      margin-right: 0px;
+      margin-left: 0px;
+  }
+  .news-info ul {
+      list-style-type:none;
+  }
+  .news-info li {
+      display:inline;
+      padding-right:10px;
+  }
+
+  .news-info a {
+      color:#999999;
+  }
+  .news-content h1,
+  .news-content h2,
+  .news-content h3,
+  .news-content h4,
+  .news-content h5 {
+      font-weight:500;
+  }
+  .news-content img {
+      max-width:100%;
+      max-height:100%;
+  }
+
+  /* recent topics */
+  .news-topic:not(:first-child) {
+    padding-top: 5px;
+    clear: both;
+    border-top: 1px solid #ddd;
+  }
+
+  .news-topic-name {
+    float: left;
+  }
+
+  .news-topic-updated-by {
+    float: right;
+  }
+
+  .news-topic-updated {
+    color:#999999;
+    clear: both;
+    float: right;
+  }
+
+  /* stats */
+  .news-stats {
+    color:#999999;
+  }
+  .news-stats:not(:first-child) {
+    padding-top: 5px;
+    clear: both;
+  }
+
+  .news-stats-left {
+    float: left;
+  }
+
+  .news-stats-right {
+    float: right;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+<div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">KOZEL</h3>
+      </div>
+      <div class="panel-body panel-widget-body" style="padding-top: 10px">
+      		KOZLIK I OSLIK
+      </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-md-8">
+    <div class="panel panel-default panel-widget">
+      <div class="panel-heading panel-widget-heading">
+        <h3 class="panel-title">KOZEL</h3>
+      </div>
+    </div>
+</div>
+
+
+{% for newspost in newsposts %}
+    <li>{{ newspost }} </li>
+{% endfor %}
+
+
+
+</div>
+{% endblock %}

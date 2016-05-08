@@ -16,6 +16,7 @@
             {{ horizontal_field(form.email)}}
             {{ horizontal_field(form.password)}}
             {{ horizontal_field(form.confirm_password)}}
+            {{ horizontal_field(form.phone_number)}}
 
             {% if config["RECAPTCHA_ENABLED"] %}
                 {{ horizontal_field(form.recaptcha) }}

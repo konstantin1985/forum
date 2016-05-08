@@ -154,7 +154,8 @@ def configure_extensions(app):
         if current_user.is_authenticated and current_user.language:
             return current_user.language
         # otherwise we will just fallback to the default language
-        return flaskbb_config["DEFAULT_LANGUAGE"]
+        #return flaskbb_config["DEFAULT_LANGUAGE"]
+        return "ru" #KS
 
     # Flask-Allows
     allows.init_app(app)

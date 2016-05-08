@@ -13,6 +13,7 @@ from datetime import datetime
 from flask_wtf import Form, RecaptchaField
 from wtforms import (StringField, PasswordField, BooleanField, HiddenField,
                      SubmitField, SelectField)
+from wtforms_components import PhoneNumberField
 from wtforms.validators import (DataRequired, InputRequired, Email, EqualTo,
                                 regexp, ValidationError)
 from flask_babelplus import lazy_gettext as _
@@ -51,6 +52,7 @@ class RegisterForm(Form):
 
     confirm_password = PasswordField(_('Confirm Password'))
 
+    phone_number = PhoneNumberField(country_code='RU', display_format='national')
 
     language = SelectField(_('Language'))
 

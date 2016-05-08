@@ -20,13 +20,16 @@ def inject_portal_link():
 def index():
     page = request.args.get('page', 1, type=int)
 
+    
+    forum_ids = "portal" #KS
+    '''
     try:
         forum_ids = flaskbb_config["PLUGIN_PORTAL_FORUM_IDS"]
     except KeyError:
         forum_ids = []
         flash(_("Please install the plugin first to configure the forums "
               "which should be displayed"), "warning")
-
+    '''
 
     group_ids = [group.id for group in current_user.groups]
     forums = Forum.query.filter(Forum.groups.any(Group.id.in_(group_ids)))

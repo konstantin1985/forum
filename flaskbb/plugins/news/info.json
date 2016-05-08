@@ -1,0 +1,9 @@
+{
+    "identifier": "news",
+    "name": "news",
+    "author": "sh4nks",
+    "website": "http://flaskbb.org",
+    "license": "BSD",
+    "description": "A news Plugin for FlaskBB",
+    "version": "0.1"
+}
