@@ -79,33 +79,27 @@
 
 {% block content %}
 <div class="row">
-
-<div class="col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">KOZEL</h3>
-      </div>
-      <div class="panel-body panel-widget-body" style="padding-top: 10px">
-      		KOZLIK I OSLIK
-      </div>
-    </div>
-</div>
-
-
-
-
-<div class="col-md-8">
-    <div class="panel panel-default panel-widget">
-      <div class="panel-heading panel-widget-heading">
-        <h3 class="panel-title">KOZEL</h3>
-      </div>
-    </div>
-</div>
-
-
+      
 {% for newspost in newsposts %}
-    <li>{{ newspost }} </li>
+	<div class="col-md-8">
+	    <div class="panel panel-default panel-widget">
+	    	<div class="panel-heading panel-widget-heading">
+	        	<h3 class="panel-title"> {{ newspost.name }} </h3>
+			</div>
+			<div class="panel-body" style="padding-top: 10px">
+				{{ newspost.text | safe }}
+			</div>
+	    </div>
+	</div>
 {% endfor %}
+
+
+
+
+
+
+
+
 
 
 

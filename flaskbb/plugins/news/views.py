@@ -2,8 +2,8 @@
 from flask import Blueprint, redirect
 from flaskbb.utils.helpers import render_template
 
-from .forms import AddForm
-from .models import NewsPost
+from .forms import AddForm, DeleteForm
+from .models import MyPost
 from flaskbb.extensions import db
 
 news = Blueprint("news", __name__, template_folder="templates")
@@ -15,23 +15,27 @@ def inject_news_link():
 
 @news.route("/")
 def index():
-    
-    newsposts = []
-    for i in NewsPost.query.all():
-        print(i)
-        print(i.text)
-        newsposts.append(i.text)
-    
-    return render_template("index.html", newsposts = newsposts)
+    return render_template("index.html", newsposts = MyPost.query.all())
 
 
 @news.route('/add', methods=['GET', 'POST'])
 def add():
     form = AddForm()
     if form.validate_on_submit():
-        p = NewsPost(text = form.text.data)
+        p = MyPost(name = form.name.data, text = form.text.data)
         db.session.add(p)
         db.session.commit()
         return redirect('/news')
-    return render_template('add.html', 
-                           form=form)
+    return render_template('add.html', form=form)
+
+@news.route('/delete', methods=['GET', 'POST'])
+def delete():
+    form = DeleteForm()
+    if form.validate_on_submit():        
+        p = MyPost.query.filter(MyPost.name == form.name.data).first()
+        db.session.delete(p)
+        db.session.commit()        
+        return redirect('/news')
+    return render_template('delete.html', form=form)
+
+
